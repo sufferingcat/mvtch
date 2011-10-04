@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>PrimeFaces Test</title>  
+        <style type="text/css"> 
+            .wijmo-wijmenu-text{
+                color:white;
+                font-weight: bold ;
+                font-size: 14px/16px;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </h:head>
+    <body>
+        <h:form>
+            <p:layout style="width:1000px;height:800px;margin:auto;"  >
+                <p:layoutUnit collapsible="true" position="north" size="80" style="padding: 0px; text-align: right;width:100%;font-size: 12px;border-width: 1px; ">
+                    <h:panelGrid style="width:100%; padding: 0px">
+                        <h:panelGroup > 
+                            <h:link  value="Login"/> | <h:outputLink value="http://yahoo.com">Sign Up</h:outputLink> 
+                        </h:panelGroup>
+                        <p:menubar autoSubmenuDisplay="true" style='width=100%; border: none; background-image: url("images/menubar.jpg");
+                                   margin: 12px; padding: 2px;'>
+                            <p:submenu label="File" >
+                                <p:submenu label="New" >
+                                    <p:menuitem value="Project" url="#" helpText="CTRL+N" />
+                                    <p:menuitem value="Other" url="#" helpText="CTRL+O"/>
+                                </p:submenu>
+                                <p:menuitem value="Open" url="#" />
+                                <p:menuitem value="Quit" url="#" />
+                            </p:submenu>
+                        </p:menubar>
+                    </h:panelGrid>
+
+
+                </p:layoutUnit>
+                <p:layoutUnit  position="west" size="200" >west</p:layoutUnit>
+                <p:layoutUnit   position="center" size="100" >content</p:layoutUnit>
+                <p:layoutUnit  position="east" size="200" >east
+                    <p:layout style="width:1000px;height:800px;margin:auto; font-size: 12px;">
+                        <p:layoutUnit position="north" size="80" id="loginPane"  >
+                            <h:panelGrid columns="2" style="font-size: 12px;height: 12px">  
+                                <h:outputText value="Name:" />  
+                                <p:password value="#{passwordBean.password1}" style="height: 10px"/>  
+                                <h:outputText value="Password:" />  
+                                <p:password value="#{passwordBean.password2}" />  
+                            </h:panelGrid>  
+                        </p:layoutUnit>
+                        <p:layoutUnit position="center" size="100" >
+
+                            <h:outputLink id="loginLink" value="javascript:void(0)" onclick="dlg.show()" title="login">     
+                                login
+                            </h:outputLink> 
+                            <p:growl id="growl" showDetail="true" life="3000" />  
+
+                            <p:dialog id="dialog" header="Login" widgetVar="dlg">  
+                            </p:dialog>
+
+                        </p:layoutUnit>
+                    </p:layout>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="30" >Footer Pane</p:layoutUnit>
+            </p:layout>
+        </h:form>
+    </body>
+</html>

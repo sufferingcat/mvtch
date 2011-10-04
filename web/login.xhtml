@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <body>
+
+        <h:outputLink id="loginLink" value="javascript:void(0)" onclick='jQuery("#outForm").hide(); dlg.show()' title="login">     
+            login
+        </h:outputLink>  
+        <input type ="text" id="inT1" />shna' text
+        <input type ="text" id="inT2" />
+        <input type="button" value ="my" onclick="see();" />
+
+        <p:growl id="growl" showDetail="true" life="3000" />  
+
+        <p:dialog id="dialog" header="Login" widgetVar="dlg" width="400" style="font-size: 14px; vertical-align: top">  
+
+            <h:form id="shanForm" >  
+                <h:panelGrid columns="3" cellpadding="3" id="pg" >  
+                    <h:outputLabel value="Username: " />  
+                    <p:inputText value="#{loginBean.username}"   
+                                 id="username" required="true" requiredMessage="Required"/>  
+                    <p:message for="username"  display="text" redisplay="false" /> 
+
+                    <h:outputLabel for="password" value="Password: " />  
+                    <p:password value="#{loginBean.password}"   
+                                id="password" required="true" requiredMessage="Required" 
+                                feedback="false" />  
+                    <p:message for="password" display="text"  /> 
+
+
+                    <p:commandButton value="Login" update="dialog"
+                                     actionListener="#{loginBean.login}"   
+                                     oncomplete="handleLoginRequest(xhr, status, args)"  />  
+                </h:panelGrid>  
+            </h:form>  
+
+        </p:dialog>  
+
+        <script type="text/javascript">  
+            function handleLoginRequest(xhr, status, args) {             
+               if(args.validationFailed || !args.loggedIn) {
+                    jQuery('#shanForm\\:username').val("");
+                    jQuery('#shanForm\\:password').val("");
+                    jQuery('#dialog').effect("shake", { times:3 }, 100);  
+                } else {  
+                    dlg.hide();  
+                    jQuery('#loginLink').fadeOut();  
+                }  
+            }  
+            
+            function see(){
+               alert($('input:button')[0].value);
+               alert($("#inT2").text('abc'));
+               alert($("#inT2").val("222"));
+               alert ($("input:text.inT1").text());
+            }
+        </script>  
+
+    </body>
+</html>
